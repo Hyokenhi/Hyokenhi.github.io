@@ -1,0 +1,744 @@
+/* RESET */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(180deg, #2B0A3D, #1A032E);
+  color: #F8F8F8;
+  scroll-behavior: smooth;
+}
+body.no-scroll {
+  overflow: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* HEADER */
+.site-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(26, 3, 46, 0.95);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.brand {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #FACC15;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  padding-right: 1rem;
+}
+
+.nav-links a {
+  color: #F8F8F8;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #FACC15;
+}
+
+/* SECTION GENERAL */
+.section {
+  padding: 6rem 2rem 4rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section h2,
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #FACC15;
+}
+
+/* HOME SECTION */
+.intro-section {
+  margin-top: 12rem;
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+}
+
+.intro-content-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr; 
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.intro-text {
+  text-align: left;
+}
+
+.intro-name {
+  margin-bottom: 0.2rem;
+  font-size: 2.8rem;
+  color: #F97316;
+  font-weight: 800;
+  margin: 0;
+}
+
+.intro-role {
+  font-size: 1.3rem;
+  color: #FACC15;
+  margin-top: 0.5rem;
+}
+
+.intro-avatar-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro-avatar img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #F97316; 
+  display: block;
+}
+
+.hero-phrase {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #E0E0E0;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* ABOUT SECTION */
+.about-card {
+  background-color: rgba(255, 255, 255, 0.05); 
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  max-width: 800px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.about-card p {
+  font-size: 1.1rem; 
+  line-height: 1.8; 
+  text-align: justify;
+  color: #E5E7EB;
+}
+
+.about-card strong {
+  color: #FACC15;
+  font-weight: 600;
+}
+
+/* PROJECTS SECTION - GRID & ORIGINAL CARD STYLING */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding-top: 1rem;
+}
+
+.project-card {
+  background-color: transparent;
+  min-height: 220px;
+  perspective: 1000px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.project-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+}
+
+.projects-grid .project-card:hover .project-card-inner:not(.is-flipped) {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(250, 204, 21, 0.2), 0 0 15px rgba(249, 115, 22, 0.15);
+}
+
+.project-card-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.project-card-front,
+.project-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  padding: 1.75rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card-front {
+  background-color: rgba(255, 255, 255, 0.05); 
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #F8F8F8;
+  text-align: left;
+  justify-content: center;
+}
+
+.project-card-back {
+  background-color: rgba(30, 10, 50, 0.98);
+  border: 1px solid rgba(250, 204, 21, 0.3);
+  color: #F8F8F8;
+  transform: rotateY(180deg);
+  overflow-y: auto; 
+  padding: 0; 
+}
+
+.project-card-back-content { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  gap: 1rem; 
+  padding: 1rem; 
+  box-sizing: border-box;
+  height: 100%; 
+  width: 100%;
+}
+
+.project-title {
+  font-size: 1.3rem; color: #FACC15; 
+  margin-top: 0; margin-bottom: 0.75rem;
+}
+.project-description {
+  font-size: 0.95rem; color: #E0E0E0; 
+  line-height: 1.6; flex-grow: 1; margin-bottom: 0; 
+}
+.project-video {
+  width: 100%;
+  max-width: 100%; 
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: none;
+  border-radius: 8px;
+  background-color: #111; 
+}
+
+.btn-github { 
+  display: inline-block; padding: 0.6rem 1.2rem;
+  border-radius: 6px; text-decoration: none;
+  font-weight: 500; font-size: 0.9rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer; border: none;
+  background-color: #F97316; color: #FFFFFF;
+}
+.btn-github:hover {
+  background-color: #ea580c; transform: scale(1.05);
+  text-decoration: none;
+}
+
+/* PROJECT OVERLAY STYLES */
+.project-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85); 
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0s 0.4s; 
+  padding: 1rem; 
+  box-sizing: border-box;
+}
+.project-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease;
+}
+
+.project-overlay-content {
+  position: relative;
+  width: 90%;
+  max-width: 850px; 
+  height: auto; 
+  max-height: 90vh;
+  transform: scale(0.7);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) 0.05s, opacity 0.4s ease 0.05s; 
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+}
+
+.project-overlay.visible .project-overlay-content {
+  transform: scale(1);
+  opacity: 1;
+}
+
+#overlay-card-container {
+  width: 100%; 
+  height: auto; 
+  max-height: calc(90vh - 40px); 
+  perspective: 1000px;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+}
+
+.project-overlay #overlay-card-container .project-card-inner {
+  width: 100%; 
+  height: auto; 
+  min-height: 500px; 
+  max-height: 100%; 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
+}
+
+.project-overlay #overlay-card-container .project-card-back {
+  padding: 0; 
+  display: flex; 
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+}
+.project-overlay #overlay-card-container .project-card-back-content {
+  width: 100%;
+  padding: 1rem; 
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  gap: 1rem;
+  overflow-y: auto; 
+}
+
+.project-overlay #overlay-card-container .project-video {
+  width: 100%; 
+  max-width: 720px; 
+  aspect-ratio: 16 / 9; 
+  border: none;
+  border-radius: 8px;
+  background-color: #111; 
+  display: block; 
+}
+
+.project-overlay #overlay-card-container .btn-github {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  margin-top: 0.5rem; 
+}
+
+.btn-close-overlay {
+  position: absolute;
+  top: 10px; 
+  right: 10px; 
+  background-color: #F97316;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 35px; 
+  height: 35px;
+  font-size: 1.6rem;
+  line-height: 35px; 
+  text-align: center;
+  cursor: pointer;
+  z-index: 2010; 
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn-close-overlay:hover {
+  background-color: #ea580c;
+  transform: scale(1.1) rotate(90deg);
+}
+
+/* STUDIES & CERTIFICATIONS - ACCORDION/TOGGLE STYLE */
+#studies .section-title {
+  margin-bottom: 2.5rem; 
+}
+
+.study-accordion {
+  max-width: 750px; 
+  margin: 0 auto; 
+  border: 1px solid rgba(250, 204, 21, 0.2); 
+  border-radius: 8px;
+  overflow: hidden; 
+}
+
+.study-item {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(250, 204, 21, 0.15); 
+}
+.study-item:last-child {
+  border-bottom: none; 
+}
+
+.study-item-header {
+  background-color: transparent; 
+  color: #F8F8F8;
+  cursor: pointer;
+  padding: 1rem 1.5rem;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 1.05rem; 
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.study-item-header:hover,
+.study-item.active .study-item-header {
+  background-color: rgba(250, 204, 21, 0.1); 
+}
+
+.study-item-icon {
+  width: 32px; 
+  height: 32px;
+  object-fit: contain;
+  margin-right: 1rem;
+  border-radius: 4px; 
+}
+
+.study-item-title-text {
+  flex-grow: 1; 
+  color: #FACC15; 
+}
+
+.study-item-toggler {
+  font-size: 1.5rem; 
+  color: #F97316; 
+  transition: transform 0.3s ease;
+}
+
+.study-item.active .study-item-toggler {
+  transform: rotate(45deg); 
+}
+
+.study-item-content {
+  background-color: rgba(255, 255, 255, 0.02); 
+  max-height: 0;
+  overflow: hidden;
+  /* Quitamos el padding de aquí y lo aplicaremos cuando esté activo */
+  padding-left: 1.5rem; /* Mantenemos el padding lateral para la indentación del texto */
+  padding-right: 1.5rem;
+  /* La transición ahora será solo para max-height y padding-top/bottom */
+  transition: max-height 0.4s ease-out, padding-top 0.4s ease-out, padding-bottom 0.4s ease-out; 
+  color: #E0E0E0; 
+  text-align: left;
+}
+
+.study-item.active .study-item-content {
+  padding-top: 1.5rem; /* Añadimos padding superior cuando está activo */
+  padding-bottom: 1.5rem; /* Añadimos padding inferior cuando está activo */
+}
+
+.study-item-content p {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+.study-item-content p strong {
+  color: #FACC15; 
+  margin-right: 0.5em;
+}
+.study-item-content p:last-child {
+  margin-bottom: 0;
+}
+
+.btn-view-study-credential { 
+  display: inline-block;
+  margin-top: 1rem;
+  background-color: #F97316;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 0.9rem;
+}
+.btn-view-study-credential:hover {
+  background-color: #ea580c;
+  transform: scale(1.03);
+  text-decoration: none;
+}
+
+/* CONTACT, RESUME, etc. (sin cambios) */
+#contact a {
+  color: #06B6D4; 
+  text-decoration: none;
+}
+#contact a:hover {
+  text-decoration: underline;
+}
+
+.btn-resume {
+  display: inline-block;
+  background-color: #F97316;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn-resume:hover {
+  background-color: #ea580c;
+  text-decoration: none;
+  transform: scale(1.03);
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: #F8F8F8;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .menu-toggle { display: block; margin-top: 0.5rem; }
+  .nav-links {
+    display: none; flex-direction: column; align-items: center;
+    gap: 1rem; text-align: center; width: 100%;
+    position: absolute; top: 100%; left: 0;
+    background-color: rgba(26, 3, 46, 0.98);
+    padding: 1rem 0; z-index: 999;
+  }
+  .nav-links.active { display: flex; }
+  .brand { text-align: center; }
+
+  .intro-content-grid {
+    grid-template-columns: 1fr; text-align: center;
+    gap: 1.5rem; padding: 1rem;
+  }
+  .intro-text { text-align: center; padding: 0; }
+  .intro-name { font-size: 2.2rem; white-space: normal; }
+  .intro-role { font-size: 1.2rem; }
+  .intro-avatar img { width: 130px; height: 130px; }
+  
+  .projects-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .project-card { min-height: 200px; }
+  .project-card-front, .project-card-back { padding: 1.25rem; }
+  .project-card-back-content { padding: 1rem; } 
+
+  .project-title { font-size: 1.2rem; }
+  .project-description { font-size: 0.9rem; }
+  
+  .project-overlay { padding: 0.5rem; } 
+  .project-overlay-content { width: 98%; } 
+  #overlay-card-container { max-height: 90vh; }
+  .project-overlay #overlay-card-container .project-card-inner { min-height: 250px; }
+
+
+  .project-overlay #overlay-card-container .project-card-back-content {
+    padding: 0.75rem; 
+    gap: 0.75rem;
+  }
+
+  .btn-close-overlay {
+    width: 32px; height: 32px; font-size: 1.4rem; line-height: 32px;
+    top: 5px; right: 5px; 
+  }
+
+  /* Responsive para estudios - acordeón */
+  .study-accordion {
+    max-width: 100%; 
+  }
+  .study-item-header {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+  }
+  .study-item-icon {
+    width: 28px;
+    height: 28px;
+    margin-right: 0.75rem;
+  }
+  .study-item-content {
+    padding: 0 1rem 1rem 1rem;
+  }
+  .study-item-content p {
+    font-size: 0.9rem;
+  }
+  .btn-view-study-credential {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .about-card { padding: 1.5rem; margin: 0 1rem; }
+  .about-card p { font-size: 1rem; line-height: 1.7; }
+}
+
+/* Ajuste de scroll para navegación anclada */
+#home, #about, #projects, #studies, #resume, #contact {
+  scroll-margin-top: 80px; 
+}
+
+/* VANTA & RIPPLE */
+html, body { margin: 0; padding: 0; }
+#vanta-bg {
+  position: relative; width: 100%;
+  min-height: 100vh; overflow: hidden;
+}
+.ripple {
+  position: fixed; width: 20px; height: 20px;
+  background: rgba(250, 204, 21, 0.3); 
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: rippleEffect 1s ease-out;
+  z-index: 9999; 
+}
+@keyframes rippleEffect {
+  from { width: 20px; height: 20px; opacity: 0.6; }
+  to { width: 300px; height: 300px; opacity: 0; }
+}
+
+/* CONTACT SECTION - NEW CARD STYLING */
+.contact-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centra las tarjetas si no ocupan todo el ancho */
+  gap: 1.5rem; /* Espacio entre tarjetas */
+  margin-top: 2.5rem; /* Espacio desde el título de la sección */
+}
+
+.contact-card {
+  background-color: rgba(255, 255, 255, 0.05); /* Fondo semi-transparente como tus otras tarjetas */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil */
+  border-radius: 12px; /* Esquinas redondeadas */
+  padding: 2rem 1.5rem; /* Relleno interno */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  text-align: center; /* Centra el contenido de la tarjeta */
+  flex: 1; /* Permite que las tarjetas crezcan y se distribuyan */
+  min-width: 240px; /* Ancho mínimo para cada tarjeta */
+  max-width: 300px; /* Ancho máximo para cada tarjeta */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-6px); /* Efecto de elevación al pasar el mouse */
+  box-shadow: 0 8px 25px rgba(250, 204, 21, 0.15), 0 0 10px rgba(249, 115, 22, 0.1); /* Sombra más pronunciada */
+}
+
+.contact-card-icon {
+  font-size: 2.8rem; /* Tamaño del icono */
+  color: #F97316;    /* Color naranja de acento para los iconos */
+  margin-bottom: 1.25rem; /* Espacio debajo del icono */
+}
+
+.contact-card-title {
+  font-size: 1.25rem; /* Tamaño del título de la tarjeta */
+  font-weight: 600;
+  color: #FACC15;    /* Color amarillo de acento para los títulos */
+  margin-bottom: 0.75rem; /* Espacio debajo del título */
+}
+
+.contact-card-detail {
+  font-size: 1rem; /* Tamaño del texto de detalle */
+  color: #E0E0E0; /* Color de texto claro */
+  line-height: 1.6;
+}
+
+.contact-card-detail a {
+  color: #06B6D4; /* Color de enlace actual (puedes cambiarlo si prefieres un acento) */
+  text-decoration: none;
+  word-break: break-all; /* Evita que enlaces largos rompan el diseño */
+  transition: color 0.3s ease;
+}
+
+.contact-card-detail a:hover {
+  color: #FACC15; /* Color amarillo al pasar el mouse sobre el enlace */
+  text-decoration: underline;
+}
+
+/* Ajustes responsivos para las tarjetas de contacto */
+@media (max-width: 992px) { /* Ajusta para cuando haya 2 tarjetas por fila */
+  .contact-card {
+    min-width: 280px; /* Un poco más de ancho para 2 por fila */
+  }
+}
+
+@media (max-width: 768px) { /* Para cuando se apilan verticalmente */
+  .contact-cards-container {
+    flex-direction: column; /* Apila las tarjetas verticalmente */
+    align-items: center; /* Centra las tarjetas apiladas */
+    gap: 1.5rem;
+  }
+  .contact-card {
+    min-width: 300px; /* Ancho de las tarjetas cuando están apiladas */
+    max-width: 90%;   /* Asegura que no exceda el contenedor en pantallas muy pequeñas */
+    flex-basis: auto; /* Resetea flex-basis */
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-card {
+    padding: 1.5rem 1rem;
+    min-width: 90%;
+  }
+  .contact-card-icon {
+    font-size: 2.2rem;
+  }
+  .contact-card-title {
+    font-size: 1.15rem;
+  }
+  .contact-card-detail {
+    font-size: 0.95rem;
+  }
+}
